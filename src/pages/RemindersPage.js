@@ -1,7 +1,7 @@
 import React from "react";
 import CreateReminder from "../components/Reminders/CreateReminder";
 import { makeStyles } from "@material-ui/styles";
-import { Typography } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 
 function RemindersPage() {
   return (
@@ -9,9 +9,11 @@ function RemindersPage() {
       <Typography variant="h3" align="center">
         Reminders
       </Typography>
-      <div align="center" style={{ justifyContent: "center" }}>
-        <CreateReminder />
-      </div>
+      <Grid justifyContent="center">
+        <div align="center" style={{marginTop: "30px"}}>
+          <CreateReminder />
+        </div>
+      </Grid>
     </div>
   );
 }

@@ -17,22 +17,17 @@ const reminderStyle = makeStyles({
   textfield1: {
     width: "50%",
     position: "sticky",
-    padding: "0.7rem",
+
   },
 
   textfield2: {
     width: "200px",
     position: "sticky",
-    padding: "0.7rem",
   },
 
   form: {
     position: "sticky",
   },
-
-  button: {
-    marginLeft : "13px"
-  }
 });
 
 function CreateReminder() {
@@ -53,14 +48,14 @@ function CreateReminder() {
   };
 
   const onChecked = (id) => {
-    const newReminders = allReminders.filter(elem => elem.id != id);
+    const newReminders = allReminders.filter((elem) => elem.id != id);
     setAllReminders(newReminders);
   };
 
   return (
     <div>
       <FormGroup className={classes.form}>
-        <Grid container>
+        <Grid container justifyContent="center">
           <TextField
             label="Reminder"
             id="margin-none"
@@ -80,17 +75,14 @@ function CreateReminder() {
             className={classes.textfield2}
             variant="outlined"
             required
-            onChange={(e) =>
-              setDate(e.target.value)
-            }
+            onChange={(e) => setDate(e.target.value)}
           />
         </Grid>
-        <Grid container>
+        <Grid container justifyContent="center" style={{paddingTop: "20px"}}>
           <Button
             type="submit"
             disableElevation
             variant="contained"
-            className={classes.button}
             color="secondary"
             onClick={(e) => {
               e.preventDefault();
@@ -104,24 +96,27 @@ function CreateReminder() {
           </Button>
         </Grid>
       </FormGroup>
+
       {allReminders.length > 0 ? (
         allReminders.map((reminders) => (
-          <List key={reminders.id}>
-            <ListItem>
-              <ListItemIcon>
-                <Checkbox
-                  id={reminders.id}
-                  checked={reminders.completed}
-                  name={reminders.id}
-                  onChange={() => onChecked(reminders.id)}
-                />
-              </ListItemIcon>
-              <ListItemText primary={reminders.title} secondary={date}/>
-            </ListItem>
-          </List>
+          <Grid container justifyContent="center">
+            <List key={reminders.id}>
+              <ListItem>
+                <ListItemIcon>
+                  <Checkbox
+                    id={reminders.id}
+                    checked={reminders.completed}
+                    name={reminders.id}
+                    onChange={() => onChecked(reminders.id)}
+                  />
+                </ListItemIcon>
+                <ListItemText primary={reminders.title} secondary={date} />
+              </ListItem>
+            </List>
+          </Grid>
         ))
       ) : (
-        <Typography>No Reminders Yet</Typography>
+        <Typography style={{ margin: "10px" }}>No Reminders Yet</Typography>
       )}
     </div>
   );

@@ -27,13 +27,15 @@ const theme = createTheme({
 });
 
 function App() {
+
+
   return (
     <ThemeProvider theme={theme}>
       <Router>
         <Layout>
           <Switch>
             <Route exact path='/'>
-              <Homepage/>
+              <Homepage />
             </Route>
             <Route path='/timer'>
               <TimerPage/>

@@ -15,7 +15,7 @@ const style = makeStyles({
         height: "100%",
         width: "200px",
         fontSize: "80px",
-        marginTop: "25%",
+        marginTop: "10%",
 
     },
 
@@ -81,7 +81,7 @@ function Pomodoro() {
     }
 
     return (
-        <div>
+        <div style={{justifyContent: "center"}}>
             <Box border={1} 
             className="timer" 
             className={classes.box}
