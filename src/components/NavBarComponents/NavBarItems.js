@@ -5,25 +5,25 @@ import React from 'react';
 export const NavBarItems =[
     {
         title: "Home",
-        icon: <HomeRounded color="gray" fontSize="large" />,
+        icon: <HomeRounded color="primary" fontSize="large" />,
         path: '/'
     },
 
     {
         title: "Units",
-        icon: <ClassRounded color="gray" fontSize="large" />,
+        icon: <ClassRounded color="primary" fontSize="large" />,
         path: '/units'
     },
 
     {
         title: "Reminders",
-        icon: <ListRounded color="gray" fontSize="large"/>,
+        icon: <ListRounded color="primary" fontSize="large"/>,
         path: '/reminders'
     },
 
     {
         title: "Study Timer",
-        icon: <TimerRounded color="gray" fontSize="large"/>,
+        icon: <TimerRounded color="primary" fontSize="large"/>,
         path: '/timer'
     },
 

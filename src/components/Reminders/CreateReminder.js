@@ -37,14 +37,15 @@ const reminderStyle = makeStyles({
 
 function CreateReminder() {
   const classes = reminderStyle();
-
   const [allReminders, setAllReminders] = useState([]);
   const [reminders, setReminders] = useState({
+    id: 0,
     title: null,
     due: null,
     completed: false,
   });
 
+  const [date, setDate] = useState("");
   let count = allReminders.length;
 
   const addSingleReminder = (reminders) => {
@@ -52,21 +53,13 @@ function CreateReminder() {
   };
 
   const onChecked = (id) => {
-    const newReminders = allReminders;
-
-    let toChange = newReminders[id];
-
-    toChange.completed = !toChange.completed;
-
-    newReminders[id] = toChange;
-
-    setAllReminders([...newReminders]);
+    const newReminders = allReminders.filter(elem => elem.id != id);
+    setAllReminders(newReminders);
   };
 
   return (
     <div>
       <FormGroup className={classes.form}>
-
         <Grid container>
           <TextField
             label="Reminder"
@@ -82,21 +75,16 @@ function CreateReminder() {
               })
             }
           />
-
           <TextField
             type="date"
             className={classes.textfield2}
             variant="outlined"
             required
             onChange={(e) =>
-              setReminders({
-                ...reminders,
-                message: e.target.value,
-              })
+              setDate(e.target.value)
             }
           />
         </Grid>
-
         <Grid container>
           <Button
             type="submit"
@@ -104,7 +92,7 @@ function CreateReminder() {
             variant="contained"
             className={classes.button}
             color="secondary"
-            onSubmit={(e) => {
+            onClick={(e) => {
               e.preventDefault();
               addSingleReminder({
                 ...reminders,
@@ -115,10 +103,7 @@ function CreateReminder() {
             Add Reminder
           </Button>
         </Grid>
-
       </FormGroup>
-      
-
       {allReminders.length > 0 ? (
         allReminders.map((reminders) => (
           <List key={reminders.id}>
@@ -131,7 +116,7 @@ function CreateReminder() {
                   onChange={() => onChecked(reminders.id)}
                 />
               </ListItemIcon>
-              <ListItemText primary={reminders.title} />
+              <ListItemText primary={reminders.title} secondary={date}/>
             </ListItem>
           </List>
         ))

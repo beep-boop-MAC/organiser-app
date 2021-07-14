@@ -16,7 +16,6 @@ const style = makeStyles({
         width: "200px",
         fontSize: "80px",
         marginTop: "25%",
-        position: "sticky%"
 
     },
 
@@ -66,9 +65,19 @@ function Pomodoro() {
     const timerMinute = minute < 10 ? `0${minute}` : minute;
     const timerSecond = second < 10 ? `0${second}` : second;
 
+    // const setTimerMinute = (time) => {
+    //     const timerMinute = minute < 10 ? `0${minute}` : minute;
+    //     setMinute(timerMinute);
+    // }
+    
+    // const setTimerSecond = (time) => {
+    //     const timerSecond = second < 10 ? `0${second}` : second;
+    //     setSecond(timerSecond);
+    // }
+
     const restart = () => {
         setMinute(25);
-        
+        setSecond(0);
     }
 
     return (
