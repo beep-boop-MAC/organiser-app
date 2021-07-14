@@ -1,25 +1,14 @@
 import React from 'react';
-import { makeStyles, Card, CardActions, CardContent, Typography, CardActionArea} from '@material-ui/core';
+import { makeStyles, Card, CardContent, Typography, CardActionArea} from '@material-ui/core';
 
 const styles = makeStyles({
     root:{
-        width: "350px",
+        width: "100%",
         height: "200px",
         display: "flex",
-
+        align: "center"
         
     },
-
-    card: {
-        position: 'absolute', 
-        left: '50%', 
-        top: '50%',
-        transform: 'translate(-16.5%, -50%)',
-        marginTop: "200px",
-        paddingBottom: "50px"
-        
-    }
-
 
 })
 

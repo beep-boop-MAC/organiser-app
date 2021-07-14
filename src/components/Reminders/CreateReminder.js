@@ -1,82 +1,143 @@
 import React, { useState } from "react";
 import {
   TextField,
-  Typography,
-  makeStyles,
   Button,
-  Container,
+  makeStyles,
+  FormGroup,
+  Checkbox,
+  Typography,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Grid,
 } from "@material-ui/core";
-
 
 const reminderStyle = makeStyles({
   textfield1: {
-    marginTop: "5px",
-    width: "40%",
+    width: "50%",
+    position: "sticky",
+    padding: "0.7rem",
   },
 
   textfield2: {
-    marginTop: "5px",
-    width: "30%%"
+    width: "200px",
+    position: "sticky",
+    padding: "0.7rem",
+  },
+
+  form: {
+    position: "sticky",
   },
 
   button: {
-    background: "primary",
-    marginTop: "4px",
-    position: 'absolute', 
-    left: '50%', 
-    top: '50%', 
-    transform: 'translate(30%, -320%)'
-  },
-
-  form:{
-    position: 'absolute', 
-    left: '50%', 
-    top: '50%', 
-    transform: 'translate(-15%, -300%)'
+    marginLeft : "13px"
   }
 });
-
 
 function CreateReminder() {
   const classes = reminderStyle();
 
+  const [allReminders, setAllReminders] = useState([]);
   const [reminders, setReminders] = useState({
     title: null,
     due: null,
     completed: false,
   });
 
+  let count = allReminders.length;
+
+  const addSingleReminder = (reminders) => {
+    setAllReminders([...allReminders, reminders]);
+  };
+
+  const onChecked = (id) => {
+    const newReminders = allReminders;
+
+    let toChange = newReminders[id];
+
+    toChange.completed = !toChange.completed;
+
+    newReminders[id] = toChange;
+
+    setAllReminders([...newReminders]);
+  };
 
   return (
     <div>
-      <Typography variant="h5">Creat a reminder</Typography>
+      <FormGroup className={classes.form}>
 
-      <form className={classes.form} noValidate>
-        <TextField
-          label="Reminder"
-          variant="outlined"
-          className={classes.textfield1}
-          required
-        />
+        <Grid container>
+          <TextField
+            label="Reminder"
+            id="margin-none"
+            variant="outlined"
+            className={classes.textfield1}
+            multiline
+            required
+            onChange={(e) =>
+              setReminders({
+                ...reminders,
+                title: e.target.value,
+              })
+            }
+          />
 
-        <TextField
-          type="date"
-          className={classes.textfield2}
-          variant="outlined"
-          required
-        />
+          <TextField
+            type="date"
+            className={classes.textfield2}
+            variant="outlined"
+            required
+            onChange={(e) =>
+              setReminders({
+                ...reminders,
+                message: e.target.value,
+              })
+            }
+          />
+        </Grid>
 
-      </form>
-      <Button
-        type="submit"
-        disableElevation
-        variant="contained"
-        className={classes.button}
-        color="secondary"
-      >
-        Add Reminder
-      </Button>
+        <Grid container>
+          <Button
+            type="submit"
+            disableElevation
+            variant="contained"
+            className={classes.button}
+            color="secondary"
+            onSubmit={(e) => {
+              e.preventDefault();
+              addSingleReminder({
+                ...reminders,
+                id: count++,
+              });
+            }}
+          >
+            Add Reminder
+          </Button>
+        </Grid>
+
+      </FormGroup>
       
+
+      {allReminders.length > 0 ? (
+        allReminders.map((reminders) => (
+          <List key={reminders.id}>
+            <ListItem>
+              <ListItemIcon>
+                <Checkbox
+                  id={reminders.id}
+                  checked={reminders.completed}
+                  name={reminders.id}
+                  onChange={() => onChecked(reminders.id)}
+                />
+              </ListItemIcon>
+              <ListItemText primary={reminders.title} />
+            </ListItem>
+          </List>
+        ))
+      ) : (
+        <Typography>No Reminders Yet</Typography>
+      )}
     </div>
   );
 }
