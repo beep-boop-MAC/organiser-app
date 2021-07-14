@@ -3,14 +3,15 @@ import CreateReminder from "../components/Reminders/CreateReminder";
 import { makeStyles } from "@material-ui/styles";
 import { Typography } from "@material-ui/core";
 
-function RemindersPage() {
+function RemindersPage({onSubmitFunc, allReminders, setAllReminders, onChecked}) {
+
   return (
     <div>
       <Typography variant="h3" align="center">
         Reminders
       </Typography>
       <div align="center" style={{ justifyContent: "center" }}>
-        <CreateReminder />
+        <CreateReminder onChecked={onChecked} onSubmitFunc={onSubmitFunc} allReminders={allReminders} setAllReminders={setAllReminders}/>
       </div>
     </div>
   );

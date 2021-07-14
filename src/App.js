@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "./App.css";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -27,22 +27,36 @@ const theme = createTheme({
 });
 
 function App() {
+  const [allReminders, setAllReminders] = useState([]);
+  const [allUnits, setAllUnits] = useState([]);
+
+  const setUnits = (unit) => {
+    setAllUnits([...allUnits, unit]);
+  }
+
+  const onChecked = (id) => {
+    const newReminders = allReminders.filter(elem => elem.id != id);
+    setAllReminders(newReminders);
+  }
+  const setReminders = (reminder) => {
+    setAllReminders([...allReminders, reminder]);
+  }
   return (
     <ThemeProvider theme={theme}>
       <Router>
         <Layout>
           <Switch>
             <Route exact path='/'>
-              <Homepage/>
+              <Homepage allReminders={allReminders} allUnits={allUnits}/>
             </Route>
             <Route path='/timer'>
               <TimerPage/>
             </Route>
             <Route path='/units'>
-              <UnitsPage/>
+              <UnitsPage allUnits={allUnits} setAllUnits={setUnits}/>
             </Route>
             <Route path ='/reminders'>
-              <RemindersPage/>
+              <RemindersPage onChecked={onChecked} allReminders={allReminders} setAllReminders={setReminders} onSubmitFunc={setReminders}/>
             </Route>
           </Switch>
         </Layout>
