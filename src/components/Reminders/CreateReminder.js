@@ -100,7 +100,7 @@ function CreateReminder({onSubmitFunc, allReminders, onChecked}) {
 
       {allReminders.length > 0 ? (
         allReminders.map((reminders) => (
-          <Grid container justifyContent="center">
+          <Grid container alignItems="center">
             <List key={reminders.id}>
               <ListItem>
                 <ListItemIcon>

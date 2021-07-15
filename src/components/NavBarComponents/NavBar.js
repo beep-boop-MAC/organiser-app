@@ -46,19 +46,6 @@ export const styles = makeStyles((theme) => ({
     padding: "theme.spacing(3)",
   },
 
-  border:{
-    borderColor: theme.palette.primary.main,
-    borderRadius: "10px",
-    padding: "20px",
-    borderBlockEndWidth: "3px",
-    borderBlockStartWidth: "3px",
-    borderInlineEndWidth: "3px",
-    borderInlineStartWidth: "3px",
-    height: "20%",
-    width: "70%",
-    marginTop: "10%",
-
-  }
 }));
 
 function NavBar() {
@@ -77,15 +64,15 @@ function NavBar() {
         anchor="left"
         classes={{ paper: classes.paper }}
       >
-        <div  align="center">
-          <Box border={1}
-          className={classes.border}
-          >
-            <img src={logo} alt="logo" style={{width: "120%", transform: 'translate(-9%, -25%)'}}/>
-          </Box>
+        <div align="center">
+          <img
+            src={logo}
+            alt="logo"
+            style={{ width: "80%",  transform: "translate(0%, 15%)"}}
+          />
         </div>
         <div className={classes.toolbar} />
-        <List style={{ marginTop: "-100px" }}>
+        <List style={{ marginTop: "-70px" }}>
           {NavBarItems.map((val, key) => (
             <ListItem button key={key} onClick={() => history.push(val.path)}>
               <ListItemIcon className={classes.icons}>{val.icon}</ListItemIcon>
