@@ -30,9 +30,9 @@ const reminderStyle = makeStyles({
   },
 });
 
-function CreateReminder() {
+function CreateReminder({onSubmitFunc, allReminders, onChecked}) {
   const classes = reminderStyle();
-  const [allReminders, setAllReminders] = useState([]);
+  // const [allReminders, setAllReminders] = useState([]);
   const [reminders, setReminders] = useState({
     id: 0,
     title: null,
@@ -43,14 +43,10 @@ function CreateReminder() {
   const [date, setDate] = useState("");
   let count = allReminders.length;
 
-  const addSingleReminder = (reminders) => {
-    setAllReminders([...allReminders, reminders]);
-  };
+  // const addSingleReminder = (reminders) => {
+  //   setAllReminders([...allReminders, reminders]);
+  // };
 
-  const onChecked = (id) => {
-    const newReminders = allReminders.filter((elem) => elem.id != id);
-    setAllReminders(newReminders);
-  };
 
   return (
     <div>
@@ -75,7 +71,12 @@ function CreateReminder() {
             className={classes.textfield2}
             variant="outlined"
             required
-            onChange={(e) => setDate(e.target.value)}
+            onChange={(e) =>
+              setReminders({
+                ...reminders,
+                due:e.target.value
+              })
+            }
           />
         </Grid>
         <Grid container justifyContent="center" style={{paddingTop: "20px"}}>
@@ -86,10 +87,10 @@ function CreateReminder() {
             color="secondary"
             onClick={(e) => {
               e.preventDefault();
-              addSingleReminder({
+              onSubmitFunc({
                 ...reminders,
-                id: count++,
-              });
+                id: count++
+              })
             }}
           >
             Add Reminder
