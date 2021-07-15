@@ -37,7 +37,7 @@ function TimerPage() {
               To get started:
             </Typography>
 
-            <Typography>Start the timer and work for 25 minute.s</Typography>
+            <Typography>Start the timer and work for 25 minutes.</Typography>
 
             <Typography>Take a 5 minute break.</Typography>
 
