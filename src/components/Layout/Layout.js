@@ -2,14 +2,8 @@ import { makeStyles } from "@material-ui/core";
 import React from "react";
 import NavBar from "../NavBarComponents/NavBar";
 
-const layoutStyle = makeStyles({
-  page: {
-    background: "theme.palette.primary.light",
-    width: "100%",
-  },
-});
 
-const drawerStyle = makeStyles((theme) => ({
+const layoutStyle = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
@@ -17,17 +11,21 @@ const drawerStyle = makeStyles((theme) => ({
   },
 
   toolbar: theme.mixins.toolbar,
+
+  page: {
+    background: "light gray",
+    width: "100%",
+  },
 }));
 
 function Layout({ children }) {
   const classes = layoutStyle();
-  const classes2 = drawerStyle();
 
   return (
     <div style={{ display: "flex" }}>
       <NavBar />
-      <main className={classes2.content}>
-        <div className={classes2.toolbar} />
+      <main className={classes.content}>
+        <div className={classes.toolbar} />
         <div className={classes.page}>{children}</div>
       </main>
     </div>

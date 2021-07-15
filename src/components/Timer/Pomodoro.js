@@ -16,6 +16,7 @@ const style = makeStyles({
         width: "200px",
         fontSize: "80px",
         marginTop: "10%",
+        backgroundColor: "#EBEBE8"
 
     },
 

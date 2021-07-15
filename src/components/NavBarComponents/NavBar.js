@@ -1,5 +1,5 @@
 import React from "react";
-import { Drawer, AppBar, Toolbar } from "@material-ui/core";
+import { Drawer, AppBar, Toolbar, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import { NavBarItems } from "./NavBarItems";
@@ -20,7 +20,7 @@ export const styles = makeStyles((theme) => ({
 
   paper: {
     width: drawerWidth,
-    backgroundColor: "EBF2FA"
+    backgroundColor: "EBF2FA",
   },
 
   root: {
@@ -46,9 +46,19 @@ export const styles = makeStyles((theme) => ({
     padding: "theme.spacing(3)",
   },
 
-  logo: {
-    width: "60%",
-  },
+  border:{
+    borderColor: theme.palette.primary.main,
+    borderRadius: "10px",
+    padding: "20px",
+    borderBlockEndWidth: "3px",
+    borderBlockStartWidth: "3px",
+    borderInlineEndWidth: "3px",
+    borderInlineStartWidth: "3px",
+    height: "20%",
+    width: "70%",
+    marginTop: "10%",
+
+  }
 }));
 
 function NavBar() {
@@ -67,17 +77,17 @@ function NavBar() {
         anchor="left"
         classes={{ paper: classes.paper }}
       >
-        <div style={{ height: "60px" }} align="center">
-          <img src={logo} className={classes.logo} alt="logo" />
+        <div  align="center">
+          <Box border={1}
+          className={classes.border}
+          >
+            <img src={logo} alt="logo" style={{width: "120%", transform: 'translate(-9%, -25%)'}}/>
+          </Box>
         </div>
         <div className={classes.toolbar} />
-        <List>
+        <List style={{ marginTop: "-100px" }}>
           {NavBarItems.map((val, key) => (
-            <ListItem 
-            button 
-            key={key}
-            onClick={() => history.push(val.path)}
-            >
+            <ListItem button key={key} onClick={() => history.push(val.path)}>
               <ListItemIcon className={classes.icons}>{val.icon}</ListItemIcon>
               <ListItemText className={classes.titles} primary={val.title} />
             </ListItem>
