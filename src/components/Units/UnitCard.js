@@ -1,25 +1,10 @@
 import React from 'react';
-import {makeStyles, Card, CardContent, Typography, CardActionArea} from '@material-ui/core';
-
-/*
-const styles = makeStyles({
-    root:{
-        width: "100%",
-        height: "200px",
-        display: "flex",
-        align: "center"
-        
-    },
-
-})
-*/
+import { Card, CardContent, Typography, CardActionArea} from '@material-ui/core';
 
 function UnitCard({unit, displayTopic}) {
 
-    // const classes = styles();
-
     return (
-        <Card>
+        <Card style={{marginTop: "12px"}}>
             <CardActionArea>
                 <CardContent align="center">
                     <Typography variant="h5">

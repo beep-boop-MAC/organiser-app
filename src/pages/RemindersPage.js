@@ -1,6 +1,5 @@
 import React from "react";
 import CreateReminder from "../components/Reminders/CreateReminder";
-import {makeStyles} from "@material-ui/styles";
 import {Grid, Typography} from "@material-ui/core";
 
 function RemindersPage({onSubmitFunc, allReminders, setAllReminders, onChecked}) {

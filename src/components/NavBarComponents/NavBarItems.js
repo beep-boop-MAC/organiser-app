@@ -1,4 +1,4 @@
-import { CalendarToday, ClassRounded, HomeRounded, ListRounded, TimerRounded,  } from '@material-ui/icons';
+import { ClassRounded, HomeRounded, ListRounded, TimerRounded,  } from '@material-ui/icons';
 import React from 'react';
 
 

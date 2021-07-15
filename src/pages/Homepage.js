@@ -10,7 +10,7 @@ function Homepage({allReminders, allUnits}) {
                 variant="h3"
                 align="center"
             >
-                HOMEPAGE
+                Home
             </Typography>
             <div>
                 <Typography variant={"h4"}>
@@ -18,9 +18,14 @@ function Homepage({allReminders, allUnits}) {
                 </Typography>
                 {
                     allReminders.length > 0 ?
-                        (<Grid container spacing={3}>
+                        (<Grid 
+                        container spacing={3}
+                        
+                        >
                             {allReminders.map((reminder) => (
-                                <Grid item xs={3}>
+                                <Grid item xs={3}
+                                style={{marginTop: "10px"}}
+                                >
                                     <ReminderCard reminder={reminder}/>
                                 </Grid>
                             ))}
@@ -32,15 +37,20 @@ function Homepage({allReminders, allUnits}) {
                 }
             </div>
             <div>
-                <Typography variant={"h4"}>
+                <Typography variant={"h4"} style={{paddingTop: "15px"}}>
                     Units
                 </Typography>
                 {
                     allUnits.length > 0 ?
-                        <Grid container spacing={3}>
+                        <Grid 
+                        container spacing={3}
+                        >
                             {
                                 allUnits.map(unit => (
-                                    <Grid item xs={6}>
+                                    <Grid 
+                                    item xs={6}
+                                    style={{marginTop: "10px"}}
+                                    >
                                         <UnitCard unit={unit}/>
                                     </Grid>
                                 ))

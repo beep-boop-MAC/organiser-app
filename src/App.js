@@ -35,7 +35,7 @@ function App() {
   }
 
   const onChecked = (id) => {
-    const newReminders = allReminders.filter(elem => elem.id != id);
+    const newReminders = allReminders.filter(elem => elem.id !== id);
     setAllReminders(newReminders);
   }
   const setReminders = (reminder) => {

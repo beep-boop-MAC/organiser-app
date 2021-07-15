@@ -81,7 +81,7 @@ function Pomodoro() {
     }
 
     return (
-        <div style={{justifyContent: "center"}}>
+        <div >
             <Box border={1} 
             className="timer" 
             className={classes.box}

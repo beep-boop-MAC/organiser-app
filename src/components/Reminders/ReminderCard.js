@@ -5,7 +5,7 @@ const ReminderCard = ({reminder}) => {
     return(
         <Card>
             <CardContent>
-                <Typography variant={"h4"}>{reminder.title}</Typography>
+                <Typography variant="h5">{reminder.title}</Typography>
                 <Typography>Due : {reminder.due}</Typography>
                 <Typography>Completed: {reminder.completed ? "Yes": "No"}</Typography>
             </CardContent>

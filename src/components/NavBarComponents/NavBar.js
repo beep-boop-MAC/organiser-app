@@ -1,6 +1,6 @@
 import React from "react";
-import { Drawer, AppBar, Toolbar, Divider } from "@material-ui/core";
-import { makeStyles, Typography } from "@material-ui/core";
+import { Drawer, AppBar, Toolbar } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import { NavBarItems } from "./NavBarItems";
 import logo from "./logo.png";
@@ -10,7 +10,7 @@ const drawerWidth = "230px";
 
 export const styles = makeStyles((theme) => ({
   page: {
-    background: "light grey",
+    backgroundColor: "EBF2FA",
     width: "100%",
   },
 
@@ -20,6 +20,7 @@ export const styles = makeStyles((theme) => ({
 
   paper: {
     width: drawerWidth,
+    backgroundColor: "EBF2FA"
   },
 
   root: {
@@ -67,7 +68,7 @@ function NavBar() {
         classes={{ paper: classes.paper }}
       >
         <div style={{ height: "60px" }} align="center">
-          <img src={logo} className={classes.logo} />
+          <img src={logo} className={classes.logo} alt="logo" />
         </div>
         <div className={classes.toolbar} />
         <List>

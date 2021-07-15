@@ -40,7 +40,6 @@ function CreateReminder({onSubmitFunc, allReminders, onChecked}) {
     completed: false,
   });
 
-  const [date, setDate] = useState("");
   let count = allReminders.length;
 
   // const addSingleReminder = (reminders) => {
@@ -77,6 +76,7 @@ function CreateReminder({onSubmitFunc, allReminders, onChecked}) {
                 due:e.target.value
               })
             }
+
           />
         </Grid>
         <Grid container justifyContent="center" style={{paddingTop: "20px"}}>
@@ -111,7 +111,7 @@ function CreateReminder({onSubmitFunc, allReminders, onChecked}) {
                     onChange={() => onChecked(reminders.id)}
                   />
                 </ListItemIcon>
-                <ListItemText primary={reminders.title} secondary={date} />
+                <ListItemText primary={reminders.title} secondary={reminders.due} />
               </ListItem>
             </List>
           </Grid>
