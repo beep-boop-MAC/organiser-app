@@ -3,20 +3,8 @@ import { makeStyles } from '@material-ui/styles';
 import { Box, Button, ButtonGroup } from '@material-ui/core';
 
 const style = makeStyles({    
-    text: {
-        fontSize: "80px",
-        position: 'absolute', 
-        left: '50%', 
-        top: '50%',
-        transform: 'translate(-50%, -50%)',
-
-    },
 
     box:{
-        position: 'absolute', 
-        left: '50%', 
-        top: '50%',
-        transform: 'translate(2%, -50%)',
         borderColor:"#189AB4",
         borderRadius: "10px",
         padding: "1rem",
@@ -24,17 +12,19 @@ const style = makeStyles({
         borderBlockStartWidth: "6px",
         borderInlineEndWidth: "6px",
         borderInlineStartWidth: "6px",
-        height: "80px",
+        height: "100%",
         width: "200px",
-        justifyContent: "center"
+        fontSize: "80px",
+        marginTop: "10%",
+        backgroundColor: "#EBEBE8"
+
     },
 
+
     button: {
-        position: 'fixed', 
-        left: '50%', 
-        top: '65%',
-        transform: 'translate(8%, -50%)',
+        position: 'sticky', 
         width: "220px",
+        padding: "2rem"
         
     }
 })
@@ -76,15 +66,28 @@ function Pomodoro() {
     const timerMinute = minute < 10 ? `0${minute}` : minute;
     const timerSecond = second < 10 ? `0${second}` : second;
 
+    // const setTimerMinute = (time) => {
+    //     const timerMinute = minute < 10 ? `0${minute}` : minute;
+    //     setMinute(timerMinute);
+    // }
+    
+    // const setTimerSecond = (time) => {
+    //     const timerSecond = second < 10 ? `0${second}` : second;
+    //     setSecond(timerSecond);
+    // }
+
     const restart = () => {
         setMinute(25);
-        
+        setSecond(0);
     }
 
     return (
-        <div className={classes.root} >
-            <Box border={1} className="timer" className={classes.box}>
-                <div className={classes.text} >{timerMinute}:{timerSecond}</div>
+        <div >
+            <Box border={1} 
+            className="timer" 
+            className={classes.box}
+            >
+                {timerMinute}:{timerSecond}
             </Box>
 
             <ButtonGroup disableElevation variant="contained" color="secondary" size="large" className={classes.button}>
